@@ -51,17 +51,17 @@ it("works when you click on the left arrow", function() {
 
 
 it("hides the left arrow on the first image", function() {
-  const { queryByTestId, queryByAltText } = render(<Carousel />);
+  const { queryByTestId } = render(<Carousel />);
 
-  const LeftArrow = queryByTestId("left-arrow");
+  const leftArrow = queryByTestId("left-arrow");
 
   // expect leftArrow not to be in the docuent on the first image 
-   expect(leftArrow).not.toBeInTheDocument();
+   expect(leftArrow).toHaveClass("hidden");
 
 });
 
 it("hides the right arrow on the last image", function() {
-  const { queryByTestId, queryByAltText } = render(<Carousel />);
+  const { queryByTestId } = render(<Carousel />);
 
   // move forward in the carousel to the last image
   const rightArrow = queryByTestId("right-arrow");
@@ -69,6 +69,6 @@ it("hides the right arrow on the last image", function() {
   fireEvent.click(rightArrow);
 
   // expect RigjhtArrow not to be in the docuent on the first image 
-   expect(rightArrow).not.toBeInTheDocument();
+   expect(rightArrow).toHaveClass("hidden");
 
 });
